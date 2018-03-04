@@ -1,13 +1,34 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { latestNews } from '../actions'
+import { bindActionCreators } from 'redux'
+
+//components
+import LatestNews from '../components/home/LatestNews'
 
 class Home extends Component {
+
+  componentDidMount () {
+    this.props.latestNews()
+  }
+
   render () {
     return (
       <div>
-        Home
+        <LatestNews latest={this.props.articles.latest} />
       </div>
     )
   }
 }
 
-export default Home
+function mapStateToProps (state) {
+  return {
+    articles: state.articles
+  }
+}
+
+function mapDispatchToProps (dispatch) {
+  return bindActionCreators({ latestNews }, dispatch)
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home)
