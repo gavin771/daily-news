@@ -7,6 +7,7 @@ import Footer from './Footer';
 
 //containers that get data from redux state
 import Home from '../containers/Home';
+import News from '../containers/News';
 
 class App extends Component {
   render () {
@@ -15,6 +16,7 @@ class App extends Component {
         <div className="App">
           <Header />
           <Switch>
+            <Route path="/news/:id" component={News}/>
             <Route exact path="/" component={Home} />
           </Switch>
           <Footer />

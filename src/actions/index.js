@@ -29,3 +29,21 @@ export function latestGalleries () {
     payload: request
   }
 }
+
+export function selectedNews (id) {
+  const request = fetch(`${URL}/articles?id=${id}`, { method: 'GET' })
+    .then(res => res.json());
+
+  return {
+    type: 'GET_SELECTED_NEWS',
+    payload: request
+  }
+}
+
+export function clearSelectedNews () {
+  
+  return {
+    type: 'CLEAR_SELECTED_NEWS',
+    payload: []
+  }
+}
