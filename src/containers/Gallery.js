@@ -4,14 +4,15 @@ import { selectedGallery, clearGallery } from '../actions'
 import { bindActionCreators } from 'redux'
 import Slider from 'react-slick';
 
+import Counter from './LikesCounter'
+
 //components
 const settings = {
   dots: true,
   infinite: true,
   speed: 500,
   slidesToShow: 1,
-  slidesToScroll: 1,
-  arrows: false
+  slidesToScroll: 1
 }
 
 class Gallery extends Component {
@@ -29,13 +30,14 @@ class Gallery extends Component {
       const gallery = selected[0];
       console.log(gallery)
       return (
-        <div><h3>The best of {gallery.artist}</h3>
+        <div>
+          <h3>The best of {gallery.artist}</h3>
           <Slider {...settings} >
             {gallery.images.map((item, idx) => {
               return (
                 <div key={idx} className="slide-item">
                   <div>
-                    <div className="image" style={{ background: `url(./images/galleries/${item.img})` }}>
+                    <div className="image" style={{ background: `url(/images/galleries/${item.img})` }}>
                     </div>
                     <div className="description"><span>{item.desc}</span></div>
                   </div>
@@ -43,6 +45,12 @@ class Gallery extends Component {
               )
             })}
           </Slider>
+          <Counter
+            articleId={gallery.id}
+            type="HANDLE_LIKES_GALLERY"
+            section="galleries"
+            likes={gallery.likes[0]}
+            dislikes={gallery.likes[1]} />¸
         </div>
       )
     }

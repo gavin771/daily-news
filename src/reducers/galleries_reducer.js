@@ -4,6 +4,8 @@ export default function (state = {}, action) {
       return { ...state, latestGallery: action.payload }
     case 'GET_SELECTED_GALLERY':
       return { ...state, selected: action.payload }
+    case 'HANDLE_LIKES_GALLERY':
+      return { ...state, selected: [action.payload] };
     case 'CLEAR_GALLERY':
       return { ...state, selected: [] }
     default: return state
