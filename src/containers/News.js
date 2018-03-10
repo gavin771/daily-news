@@ -45,7 +45,6 @@ class News extends Component {
 }
 
 function mapStateToProps (state) {
-  console.log(state)
   return {
     articles: state.articles,
   }

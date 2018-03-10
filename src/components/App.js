@@ -8,6 +8,7 @@ import Footer from './Footer';
 //containers that get data from redux state
 import Home from '../containers/Home';
 import News from '../containers/News';
+import Gallery from '../containers/Gallery'
 
 class App extends Component {
   render () {
@@ -17,6 +18,7 @@ class App extends Component {
           <Header />
           <Switch>
             <Route path="/news/:id" component={News}/>
+            <Route exact path="/galleries/:id" component={Gallery} />
             <Route exact path="/" component={Home} />
           </Switch>
           <Footer />
